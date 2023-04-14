@@ -8,13 +8,16 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "demo",
-					"value": "demo1"
+					"variableName": "Demo2",
+					"value": "Demo"
 				}
 			}
 		],
 		"variables": {
 			"Demo1": {
+				"type": "String"
+			},
+			"Demo2": {
 				"type": "String"
 			}
 		},
