@@ -14,12 +14,6 @@
 			}
 		],
 		"variables": {
-			"demo": {
-				"type": "String"
-			},
-			"Demo": {
-				"type": "String"
-			},
 			"Demo1": {
 				"type": "String"
 			}
