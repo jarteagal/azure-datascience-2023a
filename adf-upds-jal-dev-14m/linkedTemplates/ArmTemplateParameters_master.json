@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-upds-jal-dev-14m"
+		},
+		"Adls_linkedservice_accountKey": {
+			"value": ""
+		},
+		"FileServer_linkedservice_password": {
+			"value": ""
+		},
+		"Adls_linkedservice_properties_typeProperties_url": {
+			"value": "https://dlsupdsjaldevq95.dfs.core.windows.net/"
+		},
+		"FileServer_linkedservice_properties_typeProperties_host": {
+			"value": "\\\\DESKTOP-2C1BGDJ\\D$\\Data"
+		},
+		"FileServer_linkedservice_properties_typeProperties_userId": {
+			"value": "MicrosoftAccount\\jarteag@gmail.com"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
