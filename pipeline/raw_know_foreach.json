@@ -1,0 +1,48 @@
+{
+	"name": "raw_know_foreach",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_source_csv",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "2008-01-01\\sk_posts_200801.csv",
+							"appname": "sharedknow",
+							"objectname": "posts"
+						}
+					},
+					"fieldList": [
+						"structure",
+						"size",
+						"lastModified",
+						"created"
+					],
+					"storeSettings": {
+						"type": "FileServerReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "01_raw_source"
+		},
+		"annotations": []
+	}
+}
