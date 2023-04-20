@@ -69,29 +69,9 @@
 				]
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": []
-			},
-			{
 				"name": "Get Metadata1",
 				"type": "GetMetadata",
-				"dependsOn": [
-					{
-						"activity": "Copy Users",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -103,11 +83,22 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_source_csv",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "2008-01-01\\sk_posts_200801.csv",
+							"appname": "sharedknow",
+							"objectname": "posts"
+						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"structure",
+						"size",
+						"lastModified",
+						"created"
+					],
 					"storeSettings": {
 						"type": "FileServerReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
