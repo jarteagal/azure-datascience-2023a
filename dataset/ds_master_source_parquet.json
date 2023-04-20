@@ -1,0 +1,21 @@
+{
+	"name": "ds_master_source_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Adls_linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "m_users1.parquet",
+				"folderPath": "data",
+				"fileSystem": "master"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

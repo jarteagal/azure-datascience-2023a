@@ -1,0 +1,73 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_target_Parquet",
+						"type": "DatasetReference"
+					},
+					"name": "RawUser"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_master_source_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          CreationDate as string,",
+				"          DownVotes as string,",
+				"          LastAccessDate as string,",
+				"          Reputation as string,",
+				"          UpVotes as string,",
+				"          Views as string,",
+				"          AccountId as string,",
+				"          Email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> RawUser",
+				"RawUser select(mapColumn(",
+				"          Id,",
+				"          DownVotes,",
+				"          LastAccessDate,",
+				"          Reputation,",
+				"          UpVotes,",
+				"          Views,",
+				"          AccountId",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Valoracion = toInteger(Reputation) + 100,",
+				"          Id = Id) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     filePattern:'m_user[n].parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
