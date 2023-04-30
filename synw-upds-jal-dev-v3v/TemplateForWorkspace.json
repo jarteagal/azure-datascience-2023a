@@ -104,7 +104,7 @@
 						"language": "sql"
 					},
 					"currentConnection": {
-						"databaseName": "master",
+						"databaseName": "updatalakehouse",
 						"poolName": "Built-in"
 					},
 					"resultLimit": 5000
